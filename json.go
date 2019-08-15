@@ -15,7 +15,7 @@
 package codec
 
 import (
-	json1 "encoding/json"
+	"github.com/json-iterator/go"
 )
 
 // JSON消息协议
@@ -23,11 +23,11 @@ type json struct {
 }
 
 func (j *json) Marshal(v interface{}) ([]byte, error) {
-	return json1.Marshal(v)
+	return jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(v)
 }
 
 func (j *json) Unmarshal(data []byte, v interface{}) error {
-	return json1.Unmarshal(data, v)
+	return jsoniter.ConfigCompatibleWithStandardLibrary.Unmarshal(data, v)
 }
 
 func (j *json) ContentType() string {
